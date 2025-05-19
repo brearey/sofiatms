@@ -9,7 +9,9 @@
 - install TS: `npm install --save-dev typescript ts-node @types/node`
 - install Express: `npm install express`
 - install types for Express `npm install --save-dev @types/express`
-- install linter and formatter `npm install --save-dev eslint prettier @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-plugin-prettier eslint-config-prettier`
+- install formatter `npm install --save-dev prettier eslint-plugin-prettier eslint-config-prettier`
+- install linter `npm init @eslint/config@latest`
+- install Jest `npm install --save-dev jest ts-jest @types/jest`
 
 ### Run
 
