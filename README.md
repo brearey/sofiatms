@@ -10,3 +10,8 @@
 
 ### Run
 - `npx ts-node src/index.ts`
+
+### Test
+
+bash:
+`curl localhost:3002/` should be return string
