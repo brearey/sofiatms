@@ -4,7 +4,7 @@
   "description": "> TMS = ticket management system. Why Sofia? Nice question...",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --watch",
     "lint": "npx eslint 'src/**/*.{ts,js}'",
     "format": "prettier --write ."
   },
