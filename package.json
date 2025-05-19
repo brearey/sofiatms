@@ -1,0 +1,21 @@
+{
+  "name": "sofiatms",
+  "version": "1.0.0",
+  "description": "> TMS = ticket management system. Why Sofia? Nice question...",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brearey/sofiatms.git"
+  },
+  "keywords": [],
+  "author": "lorriant",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/brearey/sofiatms/issues"
+  },
+  "homepage": "https://github.com/brearey/sofiatms#readme"
+}
