@@ -4,6 +4,7 @@
   "description": "> TMS = ticket management system. Why Sofia? Nice question...",
   "main": "index.js",
   "scripts": {
+    "dev": "ts-node-dev --rs ./src/index.ts",
     "test": "jest --watch",
     "lint": "npx eslint 'src/**/*.{ts,js}'",
     "format": "prettier --write ."
@@ -33,6 +34,7 @@
     "prettier": "^3.5.3",
     "ts-jest": "^29.3.4",
     "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.32.1"
   },
