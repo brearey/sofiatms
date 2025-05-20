@@ -12,6 +12,8 @@
 - install formatter `npm install --save-dev prettier eslint-plugin-prettier eslint-config-prettier`
 - install linter `npm init @eslint/config@latest`
 - install Jest `npm install --save-dev jest ts-jest @types/jest`
+- install Prisma ORM `npm install prisma --save-dev`
+- install Prisma ORM Client `npm install @prisma/client`
 
 ### Run
 
