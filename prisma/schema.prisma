@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
   output   = "../generated/prisma"
@@ -11,21 +8,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum TicketStatus {
-  NEW
-  IN_PROGRESS
-  COMPLETED
-  CANCELLED
-}
-
 model Ticket {
-  id                 Int     @id @default(autoincrement())
-  topic              String // Тема обращения
-  message            String // Текст обращения
-  status             TicketStatus @default(NEW) // Статус обращения
-  resolution         String? // Решение
-  cancelledReason    String? // Причина отмены
-  createdAt          DateTime @default(now()) // Дата создания
-  updatedAt          DateTime @updatedAt // Дата обновления
-  cancelledAt        DateTime? // Дата отмены
+  id              Int       @id @default(autoincrement())
+  topic           String
+  message         String
+  status          String    @default("NEW")
+  resolution      String?
+  cancelledReason String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  cancelledAt     DateTime?
 }
