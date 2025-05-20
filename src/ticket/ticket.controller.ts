@@ -1,11 +1,11 @@
 import TicketDTO from './TicketDTO';
 import {TicketStatus} from './TicketStatus';
 
-export function create(): TicketDTO {
+export function create(topic: string, message: string): TicketDTO {
   return new TicketDTO(
       1,
-      'Docker',
-      'How unset sudo from docker',
+      topic,
+      message,
       TicketStatus.NEW,
       null,
       null,
