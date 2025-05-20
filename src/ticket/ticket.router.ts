@@ -1,9 +1,10 @@
 import { Router } from 'express';
+import { create } from './ticket.controller';
 
 const router = Router();
 
 router.post('/create', (req, res) => {
-  res.send({ message: 'create' });
+  res.send(create());
 });
 router.put('/progress', (req, res) => {
   res.send({ message: 'progress' });
