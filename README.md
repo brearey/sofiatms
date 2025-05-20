@@ -31,11 +31,15 @@ bash:
 
 ### Prisma ORM
 
+- init `npx prisma init --datasource-provider sqlite --output ../generated/prisma`
+- migrate `npx prisma migrate dev --name init`
+- pull `npx prisma db pull`
+- client generate `npx prisma generate`
+
 [Prisma ORM guide](https://www.prisma.io/docs/getting-started/quickstart-sqlite)
 
-TODO:
+### TODO:
 
-- [x] Set the DATABASE_URL in the .env file to point to your existing database. If your database has no tables yet, read https://pris.ly/d/getting-started
-- [x] Write `prisma.schema`
-- [x] Run `prisma db pull` to turn your database schema into a Prisma schema.
-- [x] Run `prisma generate` to generate the Prisma Client. You can then start querying your database.
+- [x] Ticker router
+- [ ] Ticker controller
+- [ ] Ticker repository
