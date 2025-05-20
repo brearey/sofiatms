@@ -16,6 +16,7 @@
 ### Run
 
 - `npx ts-node src/index.ts`
+- daemon run: `npm run dev`
 
 ### Test
 
