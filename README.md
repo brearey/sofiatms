@@ -31,6 +31,8 @@ bash:
 
 ### Prisma ORM
 
+> Ticket status: `0 = NEW, 1 = IN_PROGRESS, 2 = COMPLETED, 3 = CANCELLED`
+
 - init `npx prisma init --datasource-provider sqlite --output ../generated/prisma`
 - migrate `npx prisma migrate dev --name init`
 - pull `npx prisma db pull`
