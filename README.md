@@ -35,7 +35,7 @@ bash:
 
 TODO:
 - [x] Set the DATABASE_URL in the .env file to point to your existing database. If your database has no tables yet, read https://pris.ly/d/getting-started
-- [ ] Write `prisma.schema`
+- [x] Write `prisma.schema`
 - [ ] Run `prisma db pull` to turn your database schema into a Prisma schema.
 - [ ] Run `prisma generate` to generate the Prisma Client. You can then start querying your database.
 - [ ] Tip: Explore how you can extend the ORM with scalable connection pooling, global caching, and real-time database events. Read: https://pris.ly/cli/beyond-orm

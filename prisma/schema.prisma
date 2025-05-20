@@ -10,3 +10,22 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
+
+enum TicketStatus {
+  NEW
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+model Ticket {
+  id                 Int     @id @default(autoincrement())
+  topic              String // Тема обращения
+  message            String // Текст обращения
+  status             TicketStatus @default(NEW) // Статус обращения
+  resolution         String? // Решение
+  cancelledReason    String? // Причина отмены
+  createdAt          DateTime @default(now()) // Дата создания
+  updatedAt          DateTime @updatedAt // Дата обновления
+  cancelledAt        DateTime? // Дата отмены
+}
