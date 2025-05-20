@@ -27,6 +27,8 @@ bash:
 
 ### Format and lint code
 
-```bash
-npm run format && npm run lint
-```
+`npm run format && npm run lint`
+
+### Prisma ORM
+
+[Prisma ORM guide](https://www.prisma.io/docs/getting-started/quickstart-sqlite)
