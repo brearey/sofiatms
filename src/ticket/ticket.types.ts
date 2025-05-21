@@ -27,4 +27,12 @@ type ResponseType = {
     status: number
 }
 
-export { TicketStatus, Ticket, UpdateStatus, ResponseType };
+type DatesFilterType = {
+    oneDate: string | undefined,
+    datesRange: {
+        from: string,
+        to: string
+    } | undefined
+}
+
+export { TicketStatus, Ticket, UpdateStatus, ResponseType, DatesFilterType };

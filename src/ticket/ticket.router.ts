@@ -1,6 +1,6 @@
 import {Router, Response} from 'express';
 import TicketController from './ticket.controller';
-import {Ticket, TicketStatus, UpdateStatus, ResponseType} from "./ticket.types";
+import {Ticket, TicketStatus, UpdateStatus, ResponseType, DatesFilterType} from "./ticket.types";
 
 const router = Router();
 
@@ -110,8 +110,19 @@ router.put('/cancel-all', async (req, res): Promise<void> => {
   }
 });
 
-router.get('/', (req, res) => {
-  res.send({ message: 'get' });
+router.get('/', async (req, res): Promise<void> => {
+  const data: DatesFilterType = {
+    oneDate: req.query?.oneDate,
+    datesRange: {
+      from: req.query?.fromDate,
+      to: req.query?.toDate
+    }
+  }
+  resSend({
+    ok: true,
+    message: await TicketController.getAll(data),
+    status: 200
+  }, res)
 });
 
 // private

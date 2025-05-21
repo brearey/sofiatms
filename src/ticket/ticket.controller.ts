@@ -1,4 +1,4 @@
-import {Ticket, TicketStatus, UpdateStatus} from './ticket.types';
+import {DatesFilterType, Ticket, TicketStatus, UpdateStatus} from './ticket.types';
 import TicketModel from './ticket.model';
 
 class TicketController {
@@ -27,6 +27,10 @@ class TicketController {
       };
     }
     return await TicketModel.cancelAll(cancelledReason);
+  }
+
+  async getAll(data: DatesFilterType): Promise<unknown> {
+    return await TicketModel.getAll(data);
   }
 }
 
