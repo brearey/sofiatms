@@ -22,6 +22,15 @@ class TicketController {
     }
     return await TicketModel.inProgress(id);
   }
+
+  async complete(id: number): Promise<unknown> {
+    if (typeof id !== 'number') {
+      return {
+        message: 'id should be a number',
+      };
+    }
+    return await TicketModel.complete(id);
+  }
 }
 
 export default new TicketController();

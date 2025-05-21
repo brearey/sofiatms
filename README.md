@@ -45,5 +45,5 @@ bash:
 ### TODO:
 
 - [x] Ticker router
-- [ ] Ticker controller
-- [ ] Ticker repository
+- [x] Ticker controller
+- [x] Ticker model

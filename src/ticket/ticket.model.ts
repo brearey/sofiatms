@@ -31,6 +31,22 @@ class TicketModel {
       return e;
     }
   }
+
+  async complete(id: number): Promise<unknown> {
+    try {
+      return await prisma.ticket.update({
+        data: {
+          status: TicketStatus.COMPLETED,
+        },
+        where: {
+          id: id,
+        },
+      });
+    } catch (e) {
+      console.error(e);
+      return e;
+    }
+  }
 }
 
 export default new TicketModel();

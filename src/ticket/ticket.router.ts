@@ -19,6 +19,14 @@ router.put('/progress', async (req, res): Promise<void> => {
   }
 });
 
+router.put('/complete', async (req, res): Promise<void> => {
+  if (req.body?.id) {
+    res.send(await TicketController.complete(req.body.id));
+  } else {
+    res.status(400).send({ message: 'id required' });
+  }
+});
+
 router.put('/complete', (req, res) => {
   res.send({ message: 'complete' });
 });
