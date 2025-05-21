@@ -12,7 +12,7 @@ PUT http://localhost:3002/api/tickets/progress
 Content-Type: application/json
 
 {
-  "id": 1
+  "id": 5
 }
 
 ### Complete ticket
@@ -38,8 +38,7 @@ PUT http://localhost:3002/api/tickets/cancel-all
 Content-Type: application/json
 
 {
-  "id": 999,
-  "value": "content"
+  "cancelledReason": "all cancel reason is this"
 }
 
 ### Get all tickets
