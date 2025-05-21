@@ -1,4 +1,4 @@
-import { Ticket } from './ticket.types';
+import { Ticket, TicketStatus } from './ticket.types';
 import prisma from '../database/prisma';
 
 class TicketModel {
@@ -9,6 +9,21 @@ class TicketModel {
           topic: ticket.topic,
           message: ticket.message,
         },
+      });
+    } catch (e) {
+      console.error(e)
+      return e;
+    }
+  }
+
+  async inProgress(id: number): Promise<unknown> {
+    try {
+      return await prisma.ticket.update({
+        data: {
+          status: TicketStatus.IN_PROGRESS
+        }, where: {
+          id: id
+        }
       });
     } catch (e) {
       console.error(e)

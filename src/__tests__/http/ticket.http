@@ -7,13 +7,12 @@ Content-Type: application/json
   "message": "asdasdasdasdasdasdads"
 }
 
-### To progress ticket
+### In progress ticket
 PUT http://localhost:3002/api/tickets/progress
 Content-Type: application/json
 
 {
-  "id": 999,
-  "value": "content"
+  "id": 1
 }
 
 ### Complete ticket
