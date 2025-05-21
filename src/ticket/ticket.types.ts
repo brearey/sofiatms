@@ -5,7 +5,7 @@ enum TicketStatus {
   CANCELLED,
 }
 
-interface ITicket {
+type Ticket = {
   id: number | null;
   topic: string;
   message: string;
@@ -16,5 +16,5 @@ interface ITicket {
 
 export {
   TicketStatus,
-  ITicket
+  Ticket
 }

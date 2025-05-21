@@ -1,7 +1,7 @@
-import { ITicket, TicketStatus } from './ticket.types';
+import { Ticket, TicketStatus } from './ticket.types';
 
-function create(topic: string, message: string): ITicket {
-  const ticket: ITicket = {
+function create(topic: string, message: string): Ticket {
+  const ticket: Ticket = {
     id: null,
     topic: topic,
     message: message,
