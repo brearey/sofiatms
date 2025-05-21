@@ -47,3 +47,10 @@ bash:
 - [x] Ticker router
 - [x] Ticker controller
 - [x] Ticker model
+
+### Quick start
+
+- `npm install`
+- `npx prisma migrate dev`
+- `npm run dev`
+- `npm run test:http`
