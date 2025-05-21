@@ -1,13 +1,17 @@
-import TicketDTO from './TicketDTO';
-import {TicketStatus} from './TicketStatus';
+import { ITicket, TicketStatus } from './ticket.types';
 
-export function create(topic: string, message: string): TicketDTO {
-  return new TicketDTO(
-      1,
-      topic,
-      message,
-      TicketStatus.NEW,
-      null,
-      null,
-  );
+function create(topic: string, message: string): ITicket {
+  const ticket: ITicket = {
+    id: null,
+    topic: topic,
+    message: message,
+    status: TicketStatus.NEW,
+    resolution: null,
+    cancelledReason: null
+  };
+  return ticket;
+}
+
+export {
+  create
 }

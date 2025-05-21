@@ -3,8 +3,8 @@ POST http://localhost:3002/api/tickets/create
 Content-Type: application/json
 
 {
-  "topic": 999,
-  "message": "content"
+  "topic": "my topic",
+  "message": "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem"
 }
 
 ### To progress ticket
