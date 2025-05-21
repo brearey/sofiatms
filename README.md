@@ -38,6 +38,7 @@ bash:
 - pull `npx prisma db pull`
 - client generate `npx prisma generate`
 - to update database from prisma schema `npx prisma migrate dev`
+- status DB `npx prisma migrate status`
 
 [Prisma ORM guide](https://www.prisma.io/docs/getting-started/quickstart-sqlite)
 

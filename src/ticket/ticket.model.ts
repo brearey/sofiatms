@@ -11,7 +11,7 @@ class TicketModel {
         },
       });
     } catch (e) {
-      console.error(e)
+      console.error(e);
       return e;
     }
   }
@@ -20,13 +20,14 @@ class TicketModel {
     try {
       return await prisma.ticket.update({
         data: {
-          status: TicketStatus.IN_PROGRESS
-        }, where: {
-          id: id
-        }
+          status: TicketStatus.IN_PROGRESS,
+        },
+        where: {
+          id: id,
+        },
       });
     } catch (e) {
-      console.error(e)
+      console.error(e);
       return e;
     }
   }

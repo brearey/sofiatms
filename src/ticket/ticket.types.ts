@@ -12,9 +12,6 @@ type Ticket = {
   status: TicketStatus;
   resolution: string | null;
   cancelledReason: string | null;
-}
+};
 
-export {
-  TicketStatus,
-  Ticket
-}
+export { TicketStatus, Ticket };

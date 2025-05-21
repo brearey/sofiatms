@@ -9,7 +9,7 @@ class TicketController {
       message: message,
       status: TicketStatus.NEW,
       resolution: null,
-      cancelledReason: null
+      cancelledReason: null,
     };
     return await TicketModel.create(ticket);
   }
@@ -17,11 +17,11 @@ class TicketController {
   async inProgress(id: number): Promise<unknown> {
     if (typeof id !== 'number') {
       return {
-        message: "id should be a number"
-      }
+        message: 'id should be a number',
+      };
     }
     return await TicketModel.inProgress(id);
   }
 }
 
-export default new TicketController()
+export default new TicketController();
