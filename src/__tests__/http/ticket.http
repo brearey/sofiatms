@@ -20,7 +20,8 @@ PUT http://localhost:3002/api/tickets/complete
 Content-Type: application/json
 
 {
-  "id": 3
+  "id": 3,
+  "resolution": "this is genius resolution"
 }
 
 ### Cancel ticket
@@ -28,8 +29,8 @@ PUT http://localhost:3002/api/tickets/cancel
 Content-Type: application/json
 
 {
-  "id": 999,
-  "value": "content"
+  "id": 1,
+  "cancelledReason": "cancelled because i feel bored"
 }
 
 ### Cancel all tickets
