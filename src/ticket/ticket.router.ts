@@ -1,13 +1,14 @@
 import { Router } from 'express';
-import { create } from './ticket.controller';
+import TicketController from './ticket.controller';
 
 const router = Router();
 
-router.post('/create', (req, res) => {
-  if (!req.body.topic || !req.body.message) {
-    res.status(400).send({message: "Error in parameters"})
+router.post('/create', async (req, res) => {
+  if (req.body?.topic && req.body?.message) {
+    res.send(await TicketController.create(req.body.topic, req.body.message));
+  } else {
+    res.status(400).send({message: 'topic and message required'});
   }
-  res.send(create(req.body.topic, req.body.message));
 });
 router.put('/progress', (req, res) => {
   res.send({ message: 'progress' });
