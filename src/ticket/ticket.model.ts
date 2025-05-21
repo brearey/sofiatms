@@ -1,4 +1,4 @@
-import {Ticket, UpdateStatus} from './ticket.types';
+import {Ticket, TicketStatus, UpdateStatus} from './ticket.types';
 import prisma from '../database/prisma';
 
 class TicketModel {
@@ -26,6 +26,23 @@ class TicketModel {
         },
         where: {
           id: data.id,
+        },
+      });
+    } catch (e) {
+      console.error(e);
+      return e;
+    }
+  }
+
+  async cancelAll(cancelledReason: string): Promise<unknown> {
+    try {
+      return await prisma.ticket.updateMany({
+        data: {
+          status: TicketStatus.CANCELLED,
+          cancelledReason: cancelledReason
+        },
+        where: {
+          status: TicketStatus.IN_PROGRESS
         },
       });
     } catch (e) {

@@ -94,9 +94,22 @@ router.put('/cancel', async (req, res): Promise<void> => {
   }
 });
 
-router.put('/cancel-all', (req, res) => {
-  res.send({ message: 'cancel-all' });
+router.put('/cancel-all', async (req, res): Promise<void> => {
+  if (req.body?.cancelledReason) {
+    resSend({
+      ok: true,
+      message: await TicketController.cancelAll(req.body.cancelledReason),
+      status: 200
+    }, res)
+  } else {
+    resSend({
+      ok: false,
+      message: 'cancelledReason required',
+      status: 400
+    }, res)
+  }
 });
+
 router.get('/', (req, res) => {
   res.send({ message: 'get' });
 });

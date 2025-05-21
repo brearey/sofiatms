@@ -1,4 +1,4 @@
-import {Ticket, UpdateStatus} from './ticket.types';
+import {Ticket, TicketStatus, UpdateStatus} from './ticket.types';
 import TicketModel from './ticket.model';
 
 class TicketController {
@@ -18,6 +18,15 @@ class TicketController {
       };
     }
     return await TicketModel.updateStatus(data);
+  }
+
+  async cancelAll(cancelledReason: string): Promise<unknown> {
+    if (!cancelledReason) {
+      return {
+        message: 'cancelled reason required',
+      };
+    }
+    return await TicketModel.cancelAll(cancelledReason);
   }
 }
 
