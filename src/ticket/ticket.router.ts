@@ -27,9 +27,6 @@ router.put('/complete', async (req, res): Promise<void> => {
   }
 });
 
-router.put('/complete', (req, res) => {
-  res.send({ message: 'complete' });
-});
 router.put('/cancel', (req, res) => {
   res.send({ message: 'cancel' });
 });
