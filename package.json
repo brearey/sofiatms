@@ -1,11 +1,15 @@
 {
   "name": "sofiatms",
   "version": "1.0.0",
-  "description": "> TMS = ticket management system. Why Sofia? Nice question...",
+  "description": "TMS = ticket management system. Why Sofia? Nice question...",
   "main": "index.js",
   "scripts": {
+    "build": "tsc --build",
+    "clean": "tsc --build --clean",
+    "prod": "node ./dist/index.js",
     "dev": "ts-node-dev --rs ./src/index.ts",
-    "test": "jest --watch",
+    "test": "jest",
+    "test:watch": "jest --watchAll",
     "lint": "npx eslint 'src/**/*.{ts,js}'",
     "format": "prettier --write ."
   },

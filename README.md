@@ -1,29 +1,38 @@
 # Sofia TMS project
 
-## Node JS, Typescript, Express, Postgres, ORM
-
 > TMS = ticket management system. Why Sofia? Nice question...
 
-### Install
+## Бэкенд приложение с использованием стека: `Node JS, Typescript, Express, SQdLite, Prisma ORM`.
 
-- install TS: `npm install --save-dev typescript ts-node @types/node`
-- install Express: `npm install express`
-- install types for Express `npm install --save-dev @types/express`
-- install formatter `npm install --save-dev prettier eslint-plugin-prettier eslint-config-prettier`
-- install linter `npm init @eslint/config@latest`
-- install Jest `npm install --save-dev jest ts-jest @types/jest`
-- install Prisma ORM `npm install prisma --save-dev`
-- install Prisma ORM Client `npm install @prisma/client`
+База данных состоит из одной таблицы Ticket (обращение), в котором есть следующие столбцы:
+1. id
+2. topic (тема обращения)
+3. message (текст обращения)
+4. status (0 - новое обращение, 1 - в работе, 2 - завершено, 3 - отменено. Есть кастомный enum тип в файле ticket.types.ts)
+5. resolution
+6. cancelledReason
+7. createdAt
+8. updatedAt
 
-### Run
+Вся БД описана в файле `prisma/prisma.schema`. А сам файл появится в этой папке.
 
-- `npx ts-node src/index.ts`
-- daemon run: `npm run dev`
+эндпоинты:
+base url: `http://localhost:3002/api/tickets`
+- POST /create (создать обращение, нужно передать тему (`topic`) и текст обращения (`message`))
+- PUT /progress (взять обращение в работу, передать `id` обращения)
+- PUT /complete (завершить обращение, передать `id` и решение `resolution`)
+- PUT /cancel (отмена обращения, передать `id` и причину `cancelledReason`)
+- PUT /cancel-all (отмена всех обращений которые в работе, передать `id` и причину `cancelledReason`)
+- GET / (получить все обращения с фильтром по диапазону дат, передать дату начала `fromDate`, дату окончания `toDate` в формате `2025-05-22`)
 
-### Test
+### Quick start
 
-bash:
-`curl localhost:3002/` should be return string
+- создать файл в корне `.env` похожий на `example.env`
+- установить все пакеты `npm install`
+- создать файл SQLite базы данных и инициировать `npx prisma migrate dev`
+- запустить сервер в режиме разработки `npm run dev`
+- сделать сборку и запустить сервер в режиме продакшн `npm run build && npm run prod`
+- запустить все е2е тесты чтобы проверить все эндпоинты (сервер должен быть запущен) `npm run test`
 
 ### Format and lint code
 
@@ -47,10 +56,4 @@ bash:
 - [x] Ticker router
 - [x] Ticker controller
 - [x] Ticker model
-
-### Quick start
-
-- `npm install`
-- `npx prisma migrate dev`
-- `npm run dev`
-- `npm run test:http`
+- [ ] Test #6 to dynamic date
