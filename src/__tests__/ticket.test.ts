@@ -6,7 +6,7 @@ const API_BASE_URL = 'http://localhost:3002/api/tickets';
 describe('Ticket API Tests', () => {
     let createdTicketId: number;
 
-    // Test 1: Create ticket
+    // Test 1
     test('Create ticket', async () => {
         const response = await axios.post(
             `${API_BASE_URL}/create`,
@@ -18,15 +18,15 @@ describe('Ticket API Tests', () => {
 
         expect(response.status).toBe(201);
         expect(response.data.message).toHaveProperty('id');
-        createdTicketId = response.data.message.id; // Сохраняем ID для последующих тестов
+        createdTicketId = response.data.message.id;
     });
 
-    // Test 2: Take ticket in progress
+    // Test 2
     test('Put ticket in progress', async () => {
         const response = await axios.put(
             `${API_BASE_URL}/progress`,
             {
-                id: createdTicketId, // Используем созданный билет
+                id: createdTicketId,
             },
         );
 
@@ -34,7 +34,7 @@ describe('Ticket API Tests', () => {
         expect(response.data.message.status).toBe(TicketStatus.IN_PROGRESS);
     });
 
-    // Test 3: Complete ticket
+    // Test 3
     test('Complete ticket', async () => {
         const resolutionText = 'this is genius resolution';
         const response = await axios.put(
@@ -50,7 +50,7 @@ describe('Ticket API Tests', () => {
         expect(response.data.message.resolution).toBe(resolutionText);
     });
 
-    // Test 4: Cancel ticket
+    // Test 4
     test('Cancel ticket', async () => {
         const cancelReason = 'cancelled because i feel bored';
         const response = await axios.put(
@@ -66,7 +66,7 @@ describe('Ticket API Tests', () => {
         expect(response.data.message.cancelledReason).toBe(cancelReason);
     });
 
-    // Test 5: Cancel all tickets
+    // Test 5
     test('Cancel all tickets', async () => {
         const cancelReason = 'all cancel reason is this';
         const response = await axios.put(
@@ -80,14 +80,19 @@ describe('Ticket API Tests', () => {
         expect(response.data.message.count).toBeGreaterThanOrEqual(0)
     });
 
-    // Test 6: Get tickets filtered by single day
-    test('Get tickets filtered by single day', async () => {
+    // Test 6
+    test('Get tickets filtered by current day', async () => {
+        const now = new Date();
+        const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        const todayEnd = new Date(todayStart);
+        todayEnd.setHours(23, 59, 59, 0);
+
         const response = await axios.get(
             `${API_BASE_URL}/`,
             {
                 params: {
-                    fromDate: '2025-05-21T00:00:00.000Z',
-                    toDate: '2025-05-21T23:59:00.000Z',
+                    fromDate: todayStart.toISOString(),
+                    toDate: todayEnd.toISOString(),
                 },
                 headers: {
                     Accept: 'application/json',
@@ -99,14 +104,21 @@ describe('Ticket API Tests', () => {
         expect(Array.isArray(response.data.message)).toBeTruthy();
     });
 
-    // Test 7: Get tickets filtered by date range
+    // test 7
     test('Get tickets filtered by date range', async () => {
+        const today = new Date();
+        const toDate = new Date(today);
+        toDate.setDate(today.getDate() + 15)
+
+        const fromDate = new Date(today);
+        fromDate.setDate(today.getDate() - 15);
+
         const response = await axios.get(
             `${API_BASE_URL}/`,
             {
                 params: {
-                    fromDate: '2025-05-10',
-                    toDate: '2025-05-30',
+                    fromDate: fromDate.toISOString(),
+                    toDate: toDate.toISOString(),
                 },
                 headers: {
                     Accept: 'application/json',

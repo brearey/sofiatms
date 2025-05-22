@@ -50,10 +50,3 @@ base url: `http://localhost:3002/api/tickets`
 - status DB `npx prisma migrate status`
 
 [Prisma ORM guide](https://www.prisma.io/docs/getting-started/quickstart-sqlite)
-
-### TODO:
-
-- [x] Ticker router
-- [x] Ticker controller
-- [x] Ticker model
-- [ ] Test #6 to dynamic date
