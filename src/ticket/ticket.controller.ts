@@ -1,4 +1,8 @@
-import {DatesFilterType, Ticket, TicketStatus, UpdateStatus} from './ticket.types';
+import {
+  DatesFilterType,
+  Ticket,
+  UpdateStatus,
+} from './ticket.types';
 import TicketModel from './ticket.model';
 
 class TicketController {

@@ -1,4 +1,9 @@
-import {DatesFilterType, Ticket, TicketStatus, UpdateStatus} from './ticket.types';
+import {
+  DatesFilterType,
+  Ticket,
+  TicketStatus,
+  UpdateStatus,
+} from './ticket.types';
 import prisma from '../database/prisma';
 
 class TicketModel {
@@ -22,7 +27,7 @@ class TicketModel {
         data: {
           status: data.status,
           resolution: data.resolution,
-          cancelledReason: data.cancelledReason
+          cancelledReason: data.cancelledReason,
         },
         where: {
           id: data.id,
@@ -39,10 +44,10 @@ class TicketModel {
       return await prisma.ticket.updateMany({
         data: {
           status: TicketStatus.CANCELLED,
-          cancelledReason: cancelledReason
+          cancelledReason: cancelledReason,
         },
         where: {
-          status: TicketStatus.IN_PROGRESS
+          status: TicketStatus.IN_PROGRESS,
         },
       });
     } catch (e) {
@@ -55,8 +60,8 @@ class TicketModel {
     try {
       return await prisma.ticket.findMany({
         where: {
-          createdAt: data.datesRange
-        }
+          createdAt: data.datesRange,
+        },
       });
     } catch (e) {
       console.error(e);
