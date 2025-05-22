@@ -28,10 +28,9 @@ type ResponseType = {
 }
 
 type DatesFilterType = {
-    oneDate: number | undefined,
     datesRange: {
-        lte: number,
-        gte: number
+        gte: string,
+        lte: string
     } | undefined
 }
 

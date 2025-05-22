@@ -53,13 +53,9 @@ class TicketModel {
 
   async getAll(data: DatesFilterType): Promise<unknown> {
     try {
-      console.log('2025-10-22'.toISO)
       return await prisma.ticket.findMany({
         where: {
-          createdAt: data.oneDate
-        },
-        select: {
-          id: true
+          createdAt: data.datesRange
         }
       });
     } catch (e) {

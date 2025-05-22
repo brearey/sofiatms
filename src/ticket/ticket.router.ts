@@ -111,28 +111,17 @@ router.put('/cancel-all', async (req, res): Promise<void> => {
 });
 
 router.get('/', async (req, res): Promise<void> => {
-  const oneDate = req.query.oneDate ? parseInt(req.query.oneDate.toString()) : undefined
-
   const datesRange = (req.query.fromDate && req.query.toDate)
       ? {
-        lte: parseInt(req.query.fromDate.toString()),
-        gte: parseInt(req.query.toDate.toString())
+        gte: new Date(req.query.fromDate.toString()).toISOString(),
+        lte: new Date(req.query.toDate.toString()).toISOString()
       }
       : undefined;
 
   const data: DatesFilterType = {
-    oneDate,
     datesRange
   };
 
-  if (datesRange && datesRange.lte > datesRange.gte) {
-    resSend({
-      ok: false,
-      message: 'dates required or incorrect',
-      status: 400
-    }, res)
-    return;
-  }
   resSend({
     ok: true,
     message: await TicketController.getAll(data),
