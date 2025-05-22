@@ -5,6 +5,7 @@
 ## Бэкенд приложение с использованием стека: `Node JS, Typescript, Express, SQdLite, Prisma ORM`.
 
 База данных состоит из одной таблицы Ticket (обращение), в котором есть следующие столбцы:
+
 1. id
 2. topic (тема обращения)
 3. message (текст обращения)
@@ -18,6 +19,7 @@
 
 эндпоинты:
 base url: `http://localhost:3002/api/tickets`
+
 - POST /create (создать обращение, нужно передать тему (`topic`) и текст обращения (`message`))
 - PUT /progress (взять обращение в работу, передать `id` обращения)
 - PUT /complete (завершить обращение, передать `id` и решение `resolution`)
@@ -27,7 +29,7 @@ base url: `http://localhost:3002/api/tickets`
 
 ### Quick start
 
-- создать файл в корне `.env` похожий на `example.env`
+- создать файл в корне `.env` похожий на `example.env` и заменить `YOUR_DATABASE_NAME` на название вашего БД, который хотите создать
 - установить все пакеты `npm install`
 - создать файл SQLite базы данных и инициировать `npx prisma migrate dev`
 - запустить сервер в режиме разработки `npm run dev`
@@ -37,16 +39,3 @@ base url: `http://localhost:3002/api/tickets`
 ### Format and lint code
 
 `npm run format && npm run lint`
-
-### Prisma ORM
-
-> Ticket status: `0 = NEW, 1 = IN_PROGRESS, 2 = COMPLETED, 3 = CANCELLED`
-
-- init `npx prisma init --datasource-provider sqlite --output ../generated/prisma`
-- migrate `npx prisma migrate dev --name init`
-- pull `npx prisma db pull`
-- client generate `npx prisma generate`
-- to update database from prisma schema `npx prisma migrate dev`
-- status DB `npx prisma migrate status`
-
-[Prisma ORM guide](https://www.prisma.io/docs/getting-started/quickstart-sqlite)

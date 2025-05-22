@@ -8,5 +8,5 @@ export default {
   transform: {
     ...tsJestTransformCfg,
   },
-  testTimeout: 10000
+  testTimeout: 10000,
 };
