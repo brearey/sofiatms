@@ -1,9 +1,4 @@
-import {
-  DatesFilterType,
-  Ticket,
-  TicketStatus,
-  UpdateStatus,
-} from './ticket.types';
+import {DatesFilterType, Ticket, TicketStatus, UpdateStatus,} from './ticket.types';
 import prisma from '../database/prisma';
 
 class TicketModel {
@@ -28,6 +23,7 @@ class TicketModel {
           status: data.status,
           resolution: data.resolution,
           cancelledReason: data.cancelledReason,
+          cancelledAt: data.status === TicketStatus.CANCELLED ? new Date() : null
         },
         where: {
           id: data.id,
@@ -45,6 +41,7 @@ class TicketModel {
         data: {
           status: TicketStatus.CANCELLED,
           cancelledReason: cancelledReason,
+          cancelledAt: new Date()
         },
         where: {
           status: TicketStatus.IN_PROGRESS,

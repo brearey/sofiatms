@@ -14,8 +14,9 @@
 6. cancelledReason
 7. createdAt
 8. updatedAt
+9. cancelledAt
 
-Вся БД описана в файле `prisma/prisma.schema`. А сам файл появится в этой папке.
+Вся БД описана в файле `prisma/schema.prisma`. А сам файл появится в этой папке.
 
 эндпоинты:
 base url: `http://localhost:3002/api/tickets`
