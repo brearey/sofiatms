@@ -41,6 +41,10 @@ Content-Type: application/json
   "cancelledReason": "all cancel reason is this"
 }
 
-### Get all tickets
-GET http://localhost:3002/api/tickets/
-Content-Type: application/json
+### Get all with filter by one date
+GET http://localhost:3002/api/tickets/?oneDate=2025-05-21
+Accept: application/json
+
+### Get all with filter by range of dates
+GET http://localhost:3002/api/tickets/?fromDate=2025-05-20&toDate=2025-05-30
+Accept: application/json

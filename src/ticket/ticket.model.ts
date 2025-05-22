@@ -1,4 +1,4 @@
-import {Ticket, TicketStatus, UpdateStatus} from './ticket.types';
+import {DatesFilterType, Ticket, TicketStatus, UpdateStatus} from './ticket.types';
 import prisma from '../database/prisma';
 
 class TicketModel {
@@ -44,6 +44,23 @@ class TicketModel {
         where: {
           status: TicketStatus.IN_PROGRESS
         },
+      });
+    } catch (e) {
+      console.error(e);
+      return e;
+    }
+  }
+
+  async getAll(data: DatesFilterType): Promise<unknown> {
+    try {
+      console.log('2025-10-22'.toISO)
+      return await prisma.ticket.findMany({
+        where: {
+          createdAt: data.oneDate
+        },
+        select: {
+          id: true
+        }
       });
     } catch (e) {
       console.error(e);

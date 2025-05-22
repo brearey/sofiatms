@@ -111,12 +111,27 @@ router.put('/cancel-all', async (req, res): Promise<void> => {
 });
 
 router.get('/', async (req, res): Promise<void> => {
+  const oneDate = req.query.oneDate ? parseInt(req.query.oneDate.toString()) : undefined
+
+  const datesRange = (req.query.fromDate && req.query.toDate)
+      ? {
+        lte: parseInt(req.query.fromDate.toString()),
+        gte: parseInt(req.query.toDate.toString())
+      }
+      : undefined;
+
   const data: DatesFilterType = {
-    oneDate: req.query?.oneDate,
-    datesRange: {
-      from: req.query?.fromDate,
-      to: req.query?.toDate
-    }
+    oneDate,
+    datesRange
+  };
+
+  if (datesRange && datesRange.lte > datesRange.gte) {
+    resSend({
+      ok: false,
+      message: 'dates required or incorrect',
+      status: 400
+    }, res)
+    return;
   }
   resSend({
     ok: true,
